@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
 
     private var totalBudget = 0
     private var totalSpent = 0
-    private var isFirstTime = true
 
     private val factory by lazy {
         TransactionViewModel.TransactionViewModelFactory(db)
