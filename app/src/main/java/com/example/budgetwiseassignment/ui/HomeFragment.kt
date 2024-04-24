@@ -1,6 +1,7 @@
 package com.example.budgetwiseassignment.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
 
     private var totalBudget = 0
     private var totalSpent = 0
+    private var isFirstTime = true
 
     private val factory by lazy {
         TransactionViewModel.TransactionViewModelFactory(db)
@@ -68,7 +70,10 @@ class HomeFragment : Fragment() {
                 list = it.toMutableList()
                 CategoryListAdapter(list)
             }
-            // Update total budget and total spent.
+
+            // Reinitialize and Update total budget and total spent.
+            totalBudget = 0
+            totalSpent = 0
             list.forEach { category ->
                 totalBudget += category.budget
                 totalSpent += category.spent
@@ -98,6 +103,7 @@ class HomeFragment : Fragment() {
                 newProgress,
                 1000
             )
+            Log.d("HomeFragment", "initObserver: $totalSpent")
             binding.balanceTv.text = "${(totalBudget - totalSpent).formatWithCommas()}"
             binding.spentNoTv.text = "${totalSpent.formatWithCommas()}"
 
