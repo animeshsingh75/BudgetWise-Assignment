@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_color">#659AEB</color>
+    <color name="primary_text_color">#707070</color>
+    <color name="primary_text_color_black">#2B2B2B</color>
+    <color name="green_color">#53BD71</color>
+    <color name="progress_color">#DDDDDD</color>
+
+    <color name="food">#213B80</color>
+    <color name="shopping">#386BBC</color>
+    <color name="transportation">#FFB900</color>
+    <color name="education">#46BDC6</color>
+    <color name="groceries">#1EBA10</color>
+    <color name="housing">#FF373C</color>
+</resources>

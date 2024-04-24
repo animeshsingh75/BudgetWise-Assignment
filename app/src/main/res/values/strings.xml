@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">BudgetWise Assignment</string>
+    <string name="home">Home</string>
+    <string name="trends">Trends</string>
+    <string name="transactions">Transactions</string>
+    <string name="community">Community</string>
+    <string name="profile">Profile</string>
+    <string name="april_2022">April 2022</string>
+    <string name="remaining_in_budget">Remaining in budget</string>
+    <string name="spent">Spent:</string>
+    <string name="budget">Budget:</string>
+
+
+    <!-- Category names -->
+
+    <string name="food">Food</string>
+    <string name="shopping">Shopping</string>
+    <string name="transportation">Transportation</string>
+    <string name="education">Education</string>
+    <string name="groceries">Groceries</string>
+    <string name="housing">Housing</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="enter_your_transaction_amount">Enter your Transaction Amount</string>
+    <string name="submit_transaction">Submit Transaction</string>
+
+    <string-array name="category">
+        <item name="food">@string/food</item>
+        <item name="shopping">@string/shopping</item>
+        <item name="transportation">@string/transportation</item>
+        <item name="education">@string/education</item>
+        <item name="groceries">@string/groceries</item>
+        <item name="housing">@string/housing</item>
+        <item>Enter category</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="insufficient_balance">Insufficient balance</string>
+    <string name="please_enter_amount">Please enter amount</string>
+    <string name="please_enter_valid_category">Please enter valid category</string>
+
+
+</resources>

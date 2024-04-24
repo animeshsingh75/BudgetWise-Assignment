@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/primary_color"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/ic_background"
+                app:layout_collapseMode="parallax" />
+
+            <Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/hamburgerIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_hamburger" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/shareIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="7dp"
+                        app:layout_constraintEnd_toStartOf="@+id/moreIv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_share" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/monthTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:text="@string/april_2022"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/downIv"
+                        app:layout_constraintEnd_toStartOf="@+id/downIv"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toEndOf="@+id/hamburgerIv"
+                        app:layout_constraintTop_toTopOf="@+id/downIv" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/downIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toStartOf="@+id/shareIv"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/monthTv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_down_arrow" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/moreIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_more" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        app:behavior_overlapTop="150dp"
+        app:expandedTitleMarginBottom="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CustomCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/balanceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="@color/green_color"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="$10,320" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/remainingTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/remaining_in_budget"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/balanceTv" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="8dp"
+                    android:progressDrawable="@drawable/ic_progress_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/remainingTv"
+                    tools:progress="82" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/spentTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/spent"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/spentNoTv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/spentNoTv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/spentNoTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/primary_text_color_black"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/spentTv"
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                    tools:text="$280,000" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/budgetTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/budget"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/spentNoTv"
+                    app:layout_constraintEnd_toStartOf="@+id/budgetNoTv"
+                    app:layout_constraintTop_toTopOf="@+id/spentNoTv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/budgetNoTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/primary_text_color_black"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                    tools:text="$280,000" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoryRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/budgetNoTv"
+                    tools:listitem="@layout/item_category_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_gravity="bottom"
+        app:itemActiveIndicatorStyle="@color/white"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemRippleColor="@null"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/FloatingActionButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="91dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add_transaction"
+        app:backgroundTint="@android:color/transparent"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:rippleColor="@android:color/transparent"
+        app:tint="@android:color/transparent" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
