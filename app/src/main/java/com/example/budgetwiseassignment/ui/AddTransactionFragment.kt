@@ -28,7 +28,7 @@ class AddTransactionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddTransactionBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -43,18 +43,22 @@ class AddTransactionFragment : Fragment() {
             categories
         ) {
             override fun getCount(): Int {
+                // Exclude last item for display as it is the hint
                 return super.getCount() - 1
             }
         }
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.categorySpinner.adapter = adapter
+        // Set default last item for hint.
         binding.categorySpinner.setSelection(adapter.count)
 
         binding.submitBtn.setOnClickListener {
+
             Utils.hideKeyboard(requireActivity(), binding.transactionAmtEdTv)
             val category = binding.categorySpinner.selectedItem.toString()
             val amount = binding.transactionAmtEdTv.text.toString()
+            // Validation for input fields before submitting transaction.
             if (amount.isNotEmpty() && amount.isNotBlank() && binding.categorySpinner.selectedItemPosition != adapter.count) {
                 viewModel.getCategoryData(category)
             } else {
@@ -81,6 +85,7 @@ class AddTransactionFragment : Fragment() {
     private fun initObserver() {
         viewModel.categoryData.observe(viewLifecycleOwner) {
             if(it!=null){
+                // Transaction amount does not exceed the available balance.
                 if (it.balance < binding.transactionAmtEdTv.text.toString().toInt()) {
                     Toast.makeText(
                         requireContext(),
@@ -88,6 +93,7 @@ class AddTransactionFragment : Fragment() {
                     ).show()
                     return@observe
                 }
+                // Update category details and navigate back.
                 it.spent += binding.transactionAmtEdTv.text.toString().toInt()
                 it.balance -= it.spent
                 viewModel.updateCategoryData(it)

@@ -68,10 +68,13 @@ class HomeFragment : Fragment() {
                 list = it.toMutableList()
                 CategoryListAdapter(list)
             }
+            // Update total budget and total spent.
             list.forEach { category ->
                 totalBudget += category.budget
                 totalSpent += category.spent
             }
+
+            //UI Update
             binding.apply {
                 balanceTv.text = "${(totalBudget - totalSpent).formatWithCommas()}"
                 budgetNoTv.text = "${totalBudget.formatWithCommas()}"
@@ -83,9 +86,10 @@ class HomeFragment : Fragment() {
             }
         }
         viewModel.updatedCategory.observe(viewLifecycleOwner) { categoryDetails ->
+            // Find the index of the updated category and update UI of category item and totals
             val index = list.indexOfFirst { it.categoryName == categoryDetails.categoryName }
             list[index] = categoryDetails
-            adapter.updateProgressBar(index, categoryDetails)
+            adapter.updateProgressBar(index)
             totalSpent += categoryDetails.spent
             val newProgress = ((totalSpent.toFloat() / totalBudget.toFloat()) * 100).toInt()
             Utils.animateProgressBar(

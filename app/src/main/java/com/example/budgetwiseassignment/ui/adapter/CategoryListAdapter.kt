@@ -1,7 +1,6 @@
 package com.example.budgetwiseassignment.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -16,6 +15,7 @@ class CategoryListAdapter(
     private val data: MutableList<CategoryDetails>,
 ) :
     RecyclerView.Adapter<CategoryListAdapter.CategoryListViewHolder>() {
+    // Last updated item in the list to animate progress bar changes.
     var lastUpdatedPosition: Int = -1
     private lateinit var binding: ItemCategoryLayoutBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryListViewHolder {
@@ -36,7 +36,8 @@ class CategoryListAdapter(
         return data.size
     }
 
-    fun updateProgressBar(position: Int, categoryDetails: CategoryDetails) {
+    fun updateProgressBar(position: Int) {
+        // Notify the adapter of item changes and animate progress bar.
         lastUpdatedPosition = position
         notifyItemChanged(position)
     }
@@ -60,8 +61,8 @@ class CategoryListAdapter(
                         category.categoryColor
                     )
                 )
+                // Animate progress bar changes
                 if (lastUpdatedPosition == adapterPosition) {
-                    Log.d("CategoryListViewHolder", "bind: $category")
                     val newProgress =
                         ((category.spent.toFloat() / category.budget.toFloat()) * 100).toInt()
                     Utils.animateProgressBar(progressBar, progressBar.progress, newProgress, 1000)

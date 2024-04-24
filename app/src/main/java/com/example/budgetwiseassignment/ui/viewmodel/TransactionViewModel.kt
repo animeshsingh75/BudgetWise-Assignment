@@ -33,6 +33,7 @@ class TransactionViewModel(private val db: CategoryDetailsDB) : ViewModel() {
         }
     }
 
+    // Updates specific fields of a category in the database and updates LiveData.
     fun updateCategoryData(categoryDetails: CategoryDetails) {
         viewModelScope.launch(Dispatchers.IO) {
             db.categoryDetailsDao()
@@ -42,6 +43,8 @@ class TransactionViewModel(private val db: CategoryDetailsDB) : ViewModel() {
                     categoryDetails.balance
                 )
             _updatedCategory.postValue(categoryDetails)
+            //This is added so that once the user navigates again it can handle the
+            // blank input string of transaction amt
             _categoryData.postValue(null)
         }
     }
