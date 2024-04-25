@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="-6dp">
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/divider"
@@ -32,6 +31,7 @@
         android:layout_marginStart="13dp"
         android:textColor="@color/primary_text_color_black"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/categoryIv"
         app:layout_constraintStart_toEndOf="@+id/categoryIv"
         app:layout_constraintTop_toTopOf="@+id/categoryIv"
@@ -45,6 +45,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="2dp"
         android:textColor="@color/green_color"
+        android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/totalTv"
         app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -57,6 +58,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="14dp"
         android:textColor="@color/primary_text_color"
+        android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -70,6 +72,7 @@
         android:layout_marginEnd="14dp"
         android:textColor="@color/primary_text_color"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalTv"
         tools:text="$90 left" />
@@ -77,10 +80,10 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/ic_category_progress_bar"
+        android:layout_height="6dp"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:indeterminateTint="@color/progress_color"
         android:progress="0"
         tools:progressTint="@color/food"
         app:layout_constraintEnd_toEndOf="parent"

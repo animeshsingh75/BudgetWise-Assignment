@@ -8,6 +8,7 @@
     <color name="primary_text_color_black">#2B2B2B</color>
     <color name="green_color">#53BD71</color>
     <color name="progress_color">#DDDDDD</color>
+    <color name="progress_color_category">#A0A0A0</color>
 
     <color name="food">#213B80</color>
     <color name="shopping">#386BBC</color>
